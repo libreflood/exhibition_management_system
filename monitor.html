@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>物联网展示</title>
+   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active">
+		<a href="#platform_dist" data-toggle="tab">展位分布</a>
+	</li>
+	<li >
+		<a href="#page_entrance_monitor" data-toggle="tab">入口流量</a>
+	</li>
+	<li>
+		<a href="#page_people_dist" data-toggle="tab">观众分布</a>
+	</li>
+    <li>
+		<a href="#radia_monitor" data-toggle="tab">雷达实时监测</a>
+	</li>
+    <li>
+		<a href="#temperator_monitor" data-toggle="tab">温度湿度</a>
+	</li>
+	
+</ul>
+<div id="myTabContent" class="tab-content">
+	<div class="tab-pane fade active " id="page_entrance_monitor">
+		<iframe src="人流量实时监测.html" height=600px width="100%" frameborder="0"></iframe>
+	</div>
+	
+	<div class="tab-pane fade active" id="page_people_dist">
+		<iframe src="观众分布.html" height=600px width="100%" frameborder="0"></iframe>
+	</div>
+	
+	<div class="tab-pane fade active" id="platform_dist">
+		<iframe src="platform_dist.html" height=750px width="100%" frameborder="0"></iframe>
+	</div>
+    <div class="tab-pane fade active" id="radia_monitor">
+        <iframe src="雷达实时监测.html" height=1500px width="100%" frameborder="0"></iframe>
+	</div>
+    <div class="tab-pane fade active" id="temperator_monitor">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="col-md-6">
+                    <iframe src="仓库温度湿度.html" height=450px width="100%" frameborder="0"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <iframe src="展区温度湿度.html" height=450px width="100%" frameborder="0"></iframe>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="col-md-6">
+                    <iframe src="展品1橱窗温度湿度.html" height=450px width="100%" frameborder="0"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <iframe src="展品2橱窗温度湿度.html" height=450px width="100%" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+	</div>
+
+</div>	
+</body>
+</html>

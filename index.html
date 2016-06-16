@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>物联网展示</title>
+   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="col-md-12">
+			<h1 class="text-center" >
+				<p style="font-family:SimHei; padding:10px;">
+					会展管理系统
+				</p>
+			</h1>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="col-md-2">
+			<ul class="nav nav-pills nav-stacked">
+				<li class="nav-header" >
+					<p  style="text-align:center; font-size:20px; font-family:SimHei"><span class="label label-primary label-lg">Super</span><strong>  功能页面</strong></p>
+				</li>
+				<li class="active">
+					<a href="#main_page" data-toggle="tab">展商管理</a>
+				</li>
+				<li>
+					<a href="#monitor" data-toggle="tab">实时监测</a>
+				</li>
+				<li>
+					<a href="#analyse" data-toggle="tab">数据分析</a>
+				</li>
+				
+			</ul>
+		</div>
+		<div class="col-md-10">
+		<div id="myTabContent" class="tab-content">
+			<div class="tab-pane fade in active" id="main_page">
+				
+				<iframe src="main_page.html" height=600px width="100%" frameborder="0"></iframe>
+			</div>
+			<div class="tab-pane fade active" id="monitor">
+				<iframe src="monitor.html" height=600px width="100%" frameborder="0"></iframe>
+			</div>
+			<div class="tab-pane fade active" id="analyse">
+				<iframe src="analyse.html" height=600px width="100%" frameborder="0"></iframe>
+			</div>
+   
+		</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

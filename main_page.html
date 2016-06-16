@@ -1,0 +1,445 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title>主页</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="col-sm-12 col-md-12">
+<nav class="navbar navbar-default" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="#">Super</a>
+   </div>
+   <div>
+      <form class="navbar-form navbar-left" role="search">
+         <div class="form-group">
+            <input id="search_content" type="text" class="form-control" placeholder="Search">
+         </div>
+		 <div class="form-group">
+			<label for="name" ><p style="padding-left:15px;">选择列表</p></label>
+			<select id="select_list" class="form-control">
+				<option>merchant</option>
+				<option>platform</option>
+			</select>
+			<input id ="search" type="button" class="btn btn-default" value="查找" onclick="SearchInfo()"></button>
+		</div>
+      </form>
+	  <div class="btn-group dropdown" style="float:right; margin:10px 10px 0px 0px">
+		
+		<button id = "btn_add_merchant" type="button" class="btn btn-default" data-toggle="modal" data-target="#addMerchant" ><span class="glyphicon glyphicon-plus"></span> 展商</button>
+		<button id = "btn_login" type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_login" ><span class="glyphicon glyphicon-user"></span> 登录</button>
+	  </div>
+   </div>
+</nav>
+
+		</div>
+	</div>
+	<div id="info" class="row-fluid">
+		<!--div class="col-sm-12 col-md-12" style = "margin:0px 0px 20px 0px;">
+			<h1> 姓名：xuyue </h1>
+			<table class="table">
+				<caption>xuyue 的展位</caption>
+				<thead>
+					<tr>
+						<th>展位ID</th>
+						<th>展位大小</th>
+						<th>剩余时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>3</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>2</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>1</td>
+						<td>2</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-12 col-md-12" style = "margin:0px 0px 20px 0px;">
+			<h1> 姓名：grandpa </h1>
+			<table class="table">
+				<caption>grandpa 的展位</caption>
+				<thead>
+					<tr>
+						<th>展位ID</th>
+						<th>展位大小</th>
+						<th>剩余时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>3</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>2</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>1</td>
+						<td>2</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-12 col-md-12" style = "margin:0px 0px 20px 0px;">
+			<h1> 姓名：monkey </h1>
+			<table class="table">
+				<caption>monkey 的展位</caption>
+				<thead>
+					<tr>
+						<th>展位ID</th>
+						<th>展位大小</th>
+						<th>剩余时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>3</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>2</td>
+						<td>3</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>1</td>
+						<td>2</td>
+					</tr>
+				</tbody>
+			</table>
+		</div-->
+	</div>	
+</div>
+
+
+
+<div class="modal fade" id="addMerchant" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">
+               添加展商
+            </h4>
+         </div>
+         <div class="modal-body">
+            <form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="firstname" class="col-sm-2 control-label">名字</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="firstname" placeholder="请输入名字">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="pwd" class="col-sm-2 control-label">密码</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" id="pwd" placeholder="请输入名字">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="repeatPwd" class="col-sm-2 control-label">重复密码</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" id="repeatPwd" placeholder="请输入名字">
+					</div>
+				</div>
+			</form>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+            </button>
+            <button id = "submitMerchant" type="button" class="btn btn-primary">
+               提交
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="addPlatform" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel2" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" 
+               aria-hidden="true">×
+            </button>
+            <h4 class="modal-title" id="myModalLabel2">
+               添加展位
+            </h4>
+         </div>
+         <div class="modal-body">
+            <form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="name">展位数量</label>
+					<select id="platformNum" class="form-control">
+						<option>0</option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+				<div id = "labels" class=\"form-group\">
+					<div class="col-sm-2">
+						<label style="float:center;">编号</label>
+					</div>
+					<div class="col-sm-3">
+						<label style="float:center;">使用时长</label>
+					</div>
+					<div class="col-sm-3">
+						<label style="float:center;">展位大小</label>
+					</div>
+					<div class="col-sm-4">
+						<label style="float:center;">展品类型</label>
+					</div>
+				</div>
+				<div id = "platform_info">
+				</div>
+			</form>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">关闭
+            </button>
+            <button id = "submitPlatform" type="button" class="btn btn-primary">
+               提交
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="modal_login" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel2" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel2">
+               用户登录
+            </h4>
+         </div>
+         <div class="modal-body">
+            <form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="login_name" class="col-sm-2 control-label">名字</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="login_name" placeholder="请输入名字">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="login_pwd" class="col-sm-2 control-label">密码</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" id="login_pwd" placeholder="请输入名字">
+					</div>
+				</div>
+			</form>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+            </button>
+            <button id = "usr_login" type="button" class="btn btn-primary" >
+               登录
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script>
+var usr_name_global;
+function AddMerchant(){
+	console.log("addMerchant begin");
+	var usr_name = $("#firstname").val();
+	var pw1 = $("#pwd").val();
+	var pw2 = $("#repeatPwd").val();
+	var params = {"name":usr_name,"password":pw1};
+	if(pw1 == pw2){
+		if(Merchant2Database(params)==false)
+			alert("unsuccessful!");
+		$("#addMerchant").modal('hide');
+	}
+	else{
+		alert('not equal');
+		$("#addMerchant").modal('hide');
+	}
+}
+
+function AddPlatform(){
+	var pfNum = $("#platformNum").val();
+	var i=0;
+	var platforms = new Array(0);
+	for(;i<pfNum;i++){
+		var temp = {id:i,time:$("#time"+i).val(),size:$("#size"+i).val(),type:$("#type"+i).val()};
+		platforms.push(temp);
+	}
+	var data = {number:pfNum,name:usr_name_global,platforms:platforms};
+	if(Platforms2Database(data) != true)
+		alert("add platform failure!");
+	$("#addPlatform").modal('hide');
+}
+function AddTextArea(){
+	
+	$("#platform_info").empty();
+	var pNum = $("#platformNum").val();
+	for(var i=0; i<pNum; i++){
+		$("#platform_info").append(
+				"<div class=\"form-group\">"+
+					"<label for=\"time"+ i +"\" class=\"col-sm-1 control-label\">"+ i +"</label>"+
+					"<div class=\"col-sm-3\">"+
+						"<input type=\"number\" class=\"form-control\" id=\"size" + i + "\" placeholder=\"1\" min=\"1\" max=\"10\">"+
+					"</div>"+
+					"<div class=\"col-sm-3\">"+
+						"<input type=\"number\" class=\"form-control\" id=\"time" + i + "\" placeholder=\"1\" min=\"1\" max=\"3\">"+
+					"</div>"+
+					"<div class=\"col-sm-3\">"+
+						"<select id=\"type"+ i +"\" class=\"form-control\">"+
+						"<option>手机</option>"+
+						"<option>电脑</option>"+
+						"<option>单反</option>"+
+						"<option>智能手表</option>"+
+						"<option>VR设备</option>"+
+						"<option>耳机</option>"+
+						"</select>"+
+					"</div>"+
+				"</div>"
+		);
+	}
+	
+} 
+function Login(){
+	var usrName = $("#login_name").val();
+	var usrPwd = $("#login_pwd").val();
+	var data = {"name":usrName,"password":usrPwd};
+	if(CheckUsrInfo(data) == true)
+		usr_name_global = usrName;
+	else{
+		alert("login failure!");
+		$("#modal_login").modal('hide');
+		return;
+	}
+	$("#btn_add_merchant").after("<button id = \"user_info\" type=\"button\" class=\"btn btn-success dropdown-toggle\"   data-toggle=\"dropdown\"> <span class=\"glyphicon glyphicon-user\"></span> "+usrName +" <span class=\"caret\" /> </button>");
+	$("#user_info").after("<ul id = \"dropdown_logout\" class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"user_info\">"+
+      "<li role=\"presentation\" >" +
+	  "<button id = \"btn_logout\" type=\"button\" class=\"btn btn-default btn-block\"  onclick=\"Logout()\" >"+"注销" +"</button>"+
+	  "</li> </ul>");
+	
+	$("#btn_add_merchant").before("<button id = \"btn_add_platform\" type=\"button\" class=\"btn btn-default\" data-toggle=\"modal\" data-target=\"#addPlatform\" ><span class=\"glyphicon glyphicon-plus\"></span> 展台</button>");
+	
+	$("#btn_login").remove();
+	$("#modal_login").modal('hide');
+	
+}
+function Logout(){
+	$("#btn_add_merchant").after("<button id = \"btn_login\" type=\"button\" class=\"btn btn-default\" data-toggle=\"modal\" data-target=\"#modal_login\" >登录</button>");
+	$("#btn_add_platform").remove();
+	$("#user_info").remove();
+	$("#dropdown_logout").empty();
+	$("#dropdown_logout").remove();
+	$("#btn_logout").remove();
+	
+}
+function SearchInfo(){
+	var type = $("#select_list").val();
+	var name = $("#search_content").val();
+	if(name == "")
+		name = "all";
+	var data = {"type":type,"name":name};
+	var info = Search(data);
+	if(info == null){
+		alert("数据库中没有"+type+"信息!");
+		return;
+	}
+	$("#info").empty();
+	if(type == "merchant"){
+		printMerchant(info);
+	}
+	else if(type == "platform"){
+		printPlatform(info);
+	}
+	
+}
+function printMerchant(var1){
+	
+	/*for(var i=0; i<var1.length; i++){
+		$("#info").append("<div class=\"col-sm-12 col-md-12\" style = \"margin:0px 0px 20px 0px;\">" + 
+		"<h1> 姓名："+var1[i][0].name+" </h1>" +
+		"<table class=\"table\">" +
+		"<thead>	<tr> <th>展位ID</th> <th>展位大小</th> 	<th>剩余时间</th> <th>展品类型</th>	</tr> </thead> <tbody id = \"body"+i+"\"></tbody> </table> </div>");
+		for(var j=0; j<var1[i].length; j++){
+			$("#body"+i).append("<tr>"+
+			"<td>"+var1[i][j].id+"</td>"+
+			"<td>"+var1[i][j].size+"</td>"+
+			"<td>"+var1[i][j].time+"</td>"+
+			"<td>"+var1[i][j].type+"</td>"+
+			"</tr>");
+		}
+	}*/
+	for(var i=0; i<var1.length; i++){
+		$("#info").append("<div class=\"col-sm-12 col-md-12\" style = \"margin:0px 0px 20px 0px;\">" +
+		"<div class=\"panel panel-info\">" +
+		"<div class=\"panel-heading\"><h3> <span class=\"glyphicon glyphicon-tags\"></span>    "+ var1[i][0].name+" </h3></div>" + 
+		"<table class=\"table\">" +
+		"<thead>	<tr> <th>展位ID</th> <th>展位大小</th> 	<th>剩余时间</th> <th>展品类型</th>	</tr> </thead> <tbody id = \"body"+i+"\"></tbody> </table> </div></div>");
+		for(var j=0; j<var1[i].length; j++){
+			$("#body"+i).append("<tr>"+
+			"<td>"+var1[i][j].id+"</td>"+
+			"<td>"+var1[i][j].size+"</td>"+
+			"<td>"+var1[i][j].time+"</td>"+
+			"<td>"+var1[i][j].type+"</td>"+
+			"</tr>");
+		}
+	}
+}
+function printPlatform(var1){
+	$("#info").append("<div class=\"col-sm-12 col-md-12\">"+
+	"<h1> 展台 </h1>"+
+	"<table class=\"table\">"+
+	"<thead>	<tr> <th>展位ID</th> <th>展位大小</th>	     <th>展商名</th>	<th>剩余时间</th> <th>展品类型</th>	</tr> </thead> <tbody id = \"body\"></tbody> </table> </div>");
+	for(var i=0; i<var1.length; i++){
+		$("#body").append("<tr>"+
+		"<td>"+var1[i].id+"</td>"+
+		"<td>"+var1[i].size+"</td>"+
+		"<td>"+var1[i].name+"</td>"+
+		"<td>"+var1[i].time+"</td>"+
+		"<td>"+var1[i].type+"</td>"+
+		"</tr>");
+	}
+}
+$(document).ready(function() { 
+	$("#submitMerchant").click(function(){AddMerchant();});
+	$("#submitPlatform").click(function(){AddPlatform();})
+	$("#platformNum").change(function(){AddTextArea();});
+	$("#usr_login").click(function(){Login();});
+	init();
+   });
+</script>
+<script type="text/javascript" src="./database.js"></script>
+</body>
+</html>

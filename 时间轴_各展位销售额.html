@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<head>
+    
+    <title>时间轴—饼状_消费总额</title>
+</head>
+<body>
+<div id="main" style="height:400px"></div>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
+      <script type="text/javascript">
+  // 路径配置
+  require.config({
+    paths:{ 
+      'echarts' : 'http://echarts.baidu.com/build/echarts',
+	  'echarts/chart/bar' : 'http://echarts.baidu.com/build/echarts',
+      'echarts/chart/pie' : 'http://echarts.baidu.com/build/echarts'
+    }
+  })
+        // 使用
+require(
+[
+  'echarts',
+  'echarts/chart/bar' ,
+  'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+],
+function (ec) {
+  // 基于准备好的dom，初始化echarts图表
+  myChart = ec.init(document.getElementById('main')); 
+  
+var idx = 1;
+option = {
+    timeline : {
+        data : [
+            '2016-05-01', '2016-05-02', '2016-05-03', '2016-05-04', 
+			 { name:'2016-05-05', symbol:'emptyStar6', symbolSize:8 },
+			 '2016-05-06', '2016-05-07', '2016-05-08', '2016-05-09', 
+			  { name:'2016-05-10', symbol:'emptyStar6', symbolSize:8 },
+			  '2016-05-11', '2016-05-12', '2016-05-13', '2016-05-14', 
+			   { name:'2016-05-15', symbol:'emptyStar6', symbolSize:8 }
+			  //'2016-05-11', '2016-05-12', '2016-05-13', '2016-05-14', '2016-05-15',
+			  // '2016-05-16', '2016-05-17', '2016-05-18', '2016-05-19', '2016-05-20',
+			  //  '2016-05-21', '2016-05-22', '2016-05-23', '2016-05-24', '2016-05-25',
+          //  { name:'2013-06-01', symbol:'emptyStar6', symbolSize:8 },
+           // '2013-07-01', '2013-08-01', '2013-09-01', '2013-10-01', '2013-11-01',
+          //  { name:'2013-12-01', symbol:'star6', symbolSize:8 }
+        ],
+        label : {
+            formatter : function(s) {
+                return s.slice(0, 10);
+            }
+        }
+    },
+    options : [
+        {
+            title : {
+                text: '各展位单日销售额',
+                subtext: '纯属虚构'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                data:['展位1','展位2','展位3','展位4','展位5','展位6']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true, 
+                        type: ['pie', 'funnel'],
+                        option: {
+                            funnel: {
+                                x: '25%',
+                                width: '50%',
+                                funnelAlign: 'left',
+                                max: 1700
+                            }
+                        }
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+        {
+           series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+        {
+           series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+        {
+           series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+        {
+           series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+        {
+           series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+		 {
+           series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+		 {
+           series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+		 {
+           series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+		 {
+           series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        },
+		 {
+           series : [
+                {
+                    name:'展位（数据纯属虚构）',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: idx * 128 + 80,  name:'展位1'},
+                        {value: idx * 64  + 160,  name:'展位2'},
+                        {value: idx * 32  + 320,  name:'展位3'},
+                        {value: idx * 16  + 640,  name:'展位4'},
+                        {value: idx++ * 8  + 1280, name:'展位5'},
+						 {value: idx++ * 8  + 1280, name:'展位6'}
+                    ]
+                }
+            ]
+        }
+    ]
+};
+                    
+                    
+  
+  // 为echarts对象加载数据 
+  myChart.setOption(option); 
+  var ecConfig = require('echarts/config');
+myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param){
+    var selected = param.selected;
+    var serie;
+    var str = '当前选择： ';
+    for (var idx in selected) {
+        serie = option.series[idx];
+        for (var i = 0, l = serie.data.length; i < l; i++) {
+            if (selected[idx][i]) {
+                str += '【系列' + idx + '】' + serie.name + ' : ' + 
+                       '【数据' + i + '】' + serie.data[i].name + ' ';
+            }
+        }
+    }
+    document.getElementById('wrong-message').innerHTML = str;
+})
+}
+)
+    </script>
+
+</body>

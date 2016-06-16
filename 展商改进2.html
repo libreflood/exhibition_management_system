@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>展商改进</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:800px"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts图表
+        var myChart = echarts.init(document.getElementById('main')); 
+
+      option = {
+    title : {
+        text: '展品特点及改进',
+        x:'center',
+        y:'top'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: function (params) {
+            if (params.indicator2) {    // is edge
+                return params.indicator2 + ' ' + params.name + ' ' + params.indicator;
+            } else {    // is node
+                return params.name
+            }
+        }
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            restore : {show: true},
+            magicType: {show: true, type: ['force', 'chord']},
+            saveAsImage : {show: true}
+        }
+    },
+    legend: {
+        x: 'left',
+        data:['iphone', '三星', '小米','魅族','华为']
+    },
+    series : [
+        {
+            name: '展品特点及改进',
+            type:'chord',
+            sort : 'ascending',
+            sortSub : 'descending',
+            ribbonType: false,
+            radius: '55%',
+            itemStyle : {
+                normal : {
+                    label : {
+                        rotate : true
+                    }
+                }
+            },
+            minRadius: 20,
+            maxRadius: 50,
+            // 使用 nodes links 表达和弦图
+            nodes: [
+                {name:'外观好'},
+                {name:'待机时间长'},
+                {name:'运行速度'},
+                {name:'流畅'},
+                {name:'像素'},
+                {name:'价格'},
+                {name:'性价比'},
+                {name:'CPU'},
+                {name:'国产', symbol: 'star'},
+                {name:'尺寸大'},
+                {name:'GPU'},
+                {name:'配置'},
+                {name:'相机'},
+                {name:'系统'},
+                {name:'内存'},
+				{name:'iphone'},
+                {name:'三星'},
+                {name:'华为'},
+                {name:'小米'},
+                {name:'魅族'},
+                {name:'内存'},
+                {name:'NFC'},
+				 {name:'情怀'}
+            ],
+            links: [
+                {source: 'iphone', target: '外观好', weight: 1, name: '具有'},
+				{source: 'iphone', target: '手感', weight: 1, name: '具有'},
+				{source: 'iphone', target: '流畅', weight: 1, name: '具有'},
+				{source: 'iphone', target: '尺寸大', weight: 1, name: '具有'},
+				{source: 'iphone', target: '待机时间长', weight: 1, name: '具有'},
+				{source: 'iphone', target: '像素', weight: 1, name: '具有'},
+				{source: 'iphone', target: '配置', weight: 1, name: '具有'},
+				{source: 'iphone', target: '运行速度', weight: 1, name: '具有'},
+				
+				{source: '三星', target: '情怀', weight: 1, name: '具有'},
+				{source: '三星', target: '配置', weight: 1, name: '具有'},
+				{source: '三星', target: '相机', weight: 1, name: '具有'},
+				{source: '三星', target: '尺寸大', weight: 1, name: '具有'},
+				{source: '三星', target: '内存', weight: 1, name: '具有'},
+				
+				{source: '魅族', target: '性价比', weight: 1, name: '具有'},
+				{source: '魅族', target: '配置', weight: 1, name: '具有'},
+				{source: '魅族', target: '国产', weight: 1, name: '具有'},
+				{source: '魅族', target: 'GPU', weight: 1, name: '具有'},
+				
+				{source: '小米', target: '国产', weight: 1, name: '具有'},
+				{source: '小米', target: '情怀', weight: 1, name: '具有'},
+				{source: '小米', target: '性价比', weight: 1, name: '具有'},
+				{source: '小米', target: '价格', weight: 1, name: '具有'},
+						
+                {source: '华为', target: '国产', weight: 1, name: '具有'},
+				{source: '华为', target: 'CPU', weight: 1, name: '具有'},
+				{source: '华为', target: '流畅', weight: 1, name: '具有'},
+				{source: '华为', target: '像素', weight: 1, name: '具有'}
+				
+               
+            ]
+        }
+    ]
+};
+                    
+        // 为echarts对象加载数据 
+        myChart.setOption(option); 
+    </script>
+</body>

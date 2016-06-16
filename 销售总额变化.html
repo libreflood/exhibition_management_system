@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<head>
+    
+    <title>消费总额变化</title>
+</head>
+<body>
+<div id="main" style="height:400px"></div>
+     <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+      <script type="text/javascript">
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        // 使用
+        require
+        (
+            [
+                'echarts',
+                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) 
+            {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                var option = {
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['消费总额']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {readOnly:false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    dataZoom : {
+        show : true,
+        realtime : true,
+        start : 40,
+        end : 55
+    },
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : function (){
+                var list = [];
+				for(var i=1; i<= 31; i++)
+					list.push('2016-05-'+i);
+                for (var i = 1; i <= 16; i++) {
+                    list.push('2016-06-' + i);
+                }
+                return list;
+            }()
+        }
+    ],
+    yAxis : [
+        {
+			name : '单日销售金额',
+            type : 'value'
+        }
+    ],
+    series : [
+        
+        {
+            name:'单日消费总额',
+            type:'bar',
+            data:function (){
+                var list = [];
+                for (var i = 1; i <= 47; i++) {
+                    list.push(Math.round(Math.random()* 100000) + 50000);
+                }
+                return list;
+            }()
+        }
+    ]
+};
+
+  myChart.setOption(option); 
+var ecConfig = require('echarts/config');
+function eConsole(param) {
+    var mes = '【' + param.type + '】';
+    if (typeof param.seriesIndex != 'undefined') {
+        mes += '  seriesIndex : ' + param.seriesIndex;
+        mes += '  dataIndex : ' + param.dataIndex;
+    }
+    if (param.type == 'hover') {
+        document.getElementById('hover-console').innerHTML = 'Event Console : ' + mes;
+    }
+    else {
+        document.getElementById('console').innerHTML = mes;
+    }
+    console.log(param);
+}
+myChart.on(ecConfig.EVENT.CLICK, eConsole);
+myChart.on(ecConfig.EVENT.DBLCLICK, eConsole);
+//myChart.on(ecConfig.EVENT.HOVER, eConsole);
+myChart.on(ecConfig.EVENT.DATA_ZOOM, eConsole);
+myChart.on(ecConfig.EVENT.LEGEND_SELECTED, eConsole);
+myChart.on(ecConfig.EVENT.MAGIC_TYPE_CHANGED, eConsole);
+myChart.on(ecConfig.EVENT.DATA_VIEW_CHANGED, eConsole);
+            }
+        );
+    </script>
+
+</body>

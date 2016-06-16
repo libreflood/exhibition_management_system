@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>物联网展示</title>
+   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<ul id="myTab" class="nav nav-tabs">
+	<li class="active">
+		<a href="#page_hot" data-toggle="tab">展品关注度</a>
+    </li>
+    <li>
+		<a href="#page_number" data-toggle="tab">人数变化</a>
+	</li>
+	<li>
+		<a href="#page_entrance_monitor" data-toggle="tab">人流量监测</a>
+	</li>
+	<li>
+		<a href="#page_people_dist" data-toggle="tab">观众分布</a>
+	</li>
+	<li>
+		<a href="#page_money_dist" data-toggle="tab">消费分布</a>
+	</li>
+	<li>
+		<a href="#keyword" data-toggle="tab">关键词</a>
+	</li>
+</ul>
+<div id="myTabContent" class="tab-content">
+	<div class="tab-pane fade in active" id="page_hot">
+		<iframe src="hot.html" height=550px width="100%" frameborder="0"></iframe>
+		<iframe src="消费监测.html" height=450px width="100%" frameborder="0"></iframe>
+	</div>	
+	
+	<div class="tab-pane fade active" id="page_number">
+		<iframe src="会展总人数变化.html" height=500px width="100%" frameborder="0"></iframe>
+		<iframe src="销售总额变化.html" height=500px width="100%" frameborder="0"></iframe>
+	</div>
+	
+	<div class="tab-pane fade active" id="page_entrance_monitor">
+		<iframe src="人流量实时监测.html" height=600px width="100%" frameborder="0"></iframe>
+	</div>
+	
+	<div class="tab-pane fade active" id="page_people_dist">
+		<iframe src="观众分布.html" height=600px width="100%" frameborder="0"></iframe>
+	</div>
+	
+	<div class="tab-pane fade active" id="page_money_dist">
+		<iframe src="消费监测_柱状.html" height=600px width="100%" frameborder="0"></iframe>
+	</div>
+		
+	<div class="tab-pane fade active" id="keyword">
+		<iframe src="手机性能关注.html" height=600px width="100%" frameborder="0"></iframe>
+	</div>
+
+
+
+</div>	
+</body>
+</html>

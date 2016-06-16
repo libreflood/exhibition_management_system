@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<head>
+    
+    <title>ECharts</title>
+</head>
+<body>
+<div id="main" style="height:400px"></div>
+     <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+      <script type="text/javascript">
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        // 使用
+        require
+        (
+            [
+                'echarts',
+                'echarts/chart/line' ,
+                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) 
+            {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                var option = {
+    title : {
+        text: '动态数据',
+        subtext: '纯属虚构'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['人流量警戒线', '入口人流量']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    dataZoom : {
+        show : false,
+        start : 0,
+        end : 100
+    },
+    xAxis : [
+        {
+			name : '时间',
+            type : 'category',
+            boundaryGap : true,
+            data : (function (){
+                var now = new Date();
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
+                    now = new Date(now - 2000);
+                }
+                return res;
+            })()
+        },
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : (function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(len + 1);
+                }
+                return res;
+            })()
+        }
+    ],
+    yAxis : [
+        {
+			min: 0,
+            type : 'value',
+            scale: true,
+            name : '人数',
+            boundaryGap: [0.2, 0.2]
+        },
+        {
+			min: 0,
+            type : 'value',
+            scale: true,
+            name : '人数',
+            boundaryGap: [0.2, 0.2]
+        }
+    ],
+    series : [
+        {
+            name:'入口人流量',
+            type:'bar',
+            xAxisIndex: 0,
+            yAxisIndex: 0,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(Math.round(Math.random() * 100));
+                }
+                return res;
+            })()
+        },
+        {
+            name:'人流量警戒线',
+            type:'line',
+			 xAxisIndex: 0,
+            yAxisIndex: 0,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(50);
+                }
+                return res;
+            })()
+        }
+    ]
+};; 
+                myChart.setOption(option); 
+
+                var lastData = 11;
+var axisData;
+var timeTicket;
+clearInterval(timeTicket);
+count = 11;
+var now2 = new Date();
+timeTicket = setInterval(function (){
+    axisData = (new Date).toLocaleTimeString().replace(/^\D*/,'');
+    var data0 = option.series[0].data;
+    var data1 = option.series[1].data;
+    data0.shift();
+    data0.push(Math.round(Math.random() * 100));
+    data1.shift();
+    data1.push(50);
+
+    option.xAxis[0].data.shift();
+    option.xAxis[0].data.push(axisData);
+    option.xAxis[1].data.shift();
+    option.xAxis[1].data.push(count++);
+
+    myChart.setOption(option);
+}, 1800);
+
+            }
+        );
+    </script>
+
+</body>

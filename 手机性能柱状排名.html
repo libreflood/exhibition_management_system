@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<head>
+    
+    <title>手机性能柱状排名</title>
+</head>
+<body>
+<div id="main" style="height:400px"></div>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
+      <script type="text/javascript">
+  // 路径配置
+  require.config({
+    paths:{ 
+      'echarts' : 'http://echarts.baidu.com/build/echarts',
+      'echarts/chart/bar' : 'http://echarts.baidu.com/build/echarts'
+    }
+  })
+        // 使用
+require(
+[
+  'echarts',
+  'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+],
+function (ec) {
+  // 基于准备好的dom，初始化echarts图表
+  myChart = ec.init(document.getElementById('main')); 
+  
+option = {
+    title : {
+        text: '热点词汇排名',
+        subtext: '数据虚构'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['手机性能']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType: {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+	
+            type : 'value',
+            boundaryGap : [0, 0.01]
+        }
+    ],
+    yAxis : [
+        {
+            type : 'category',
+			data : ['像素','内存','手感','外观','性价比','价格']
+        }
+    ],
+    series : [
+        {
+            name:'手机性能',
+            type:'bar',
+            data:[100, 150, 200, 220, 340, 500]
+        }
+    ]
+};
+                    
+                    
+                    
+  
+  // 为echarts对象加载数据 
+  myChart.setOption(option); 
+  var ecConfig = require('echarts/config');
+myChart.on(ecConfig.EVENT.PIE_SELECTED, function (param){
+    var selected = param.selected;
+    var serie;
+    var str = '当前选择： ';
+    for (var idx in selected) {
+        serie = option.series[idx];
+        for (var i = 0, l = serie.data.length; i < l; i++) {
+            if (selected[idx][i]) {
+                str += '【系列' + idx + '】' + serie.name + ' : ' + 
+                       '【数据' + i + '】' + serie.data[i].name + ' ';
+            }
+        }
+    }
+    document.getElementById('wrong-message').innerHTML = str;
+})
+}
+)
+    </script>
+
+</body>

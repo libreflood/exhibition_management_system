@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id="charts" style="height:400px;">
+ 
+        </div>
+        <script type="text/javascript" src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+        <script type="text/javascript">
+           function createRandomItemStyle() {
+    return {
+        normal: {
+            color: 'rgb(' + [
+                Math.round(Math.random() * 160),
+                Math.round(Math.random() * 160),
+                Math.round(Math.random() * 160)
+            ].join(',') + ')'
+        }
+    };
+}
+ 
+            require.config({
+                paths:{
+                    echarts: "http://echarts.baidu.com/build/dist"
+                }
+            })
+            require(["echarts/echarts","echarts/chart/wordCloud"],
+			function(ec){
+                var myEchart = ec.init(document.getElementById("charts"));
+                var option = {
+   
+    tooltip: {
+        show: true
+    },
+    series: [{
+        name: 'Google Trends',
+        type: 'wordCloud',
+        size: ['80%', '80%'],
+        textRotation : [0, 45, 90, -45],
+        textPadding: 0,
+        autoSize: {
+            enable: true,
+            minSize: 14
+        },
+        data: [
+            {
+                name: "价格",
+                value: 10000,
+                itemStyle: {
+                    normal: {
+                        color: 'black'
+                    }
+                }
+            },
+			 {
+                name: "相机",
+                value: 900,
+                itemStyle: {
+                    normal: {
+                        color: 'black'
+                    }
+                }
+            },
+			 {
+                name: "CPU",
+                value: 1000,
+                itemStyle: {
+                    normal: {
+                        color: 'black'
+                    }
+                }
+            },
+			 {
+                name: "多核",
+                value: 700,
+                itemStyle: {
+                    normal: {
+                        color: 'black'
+                    }
+                }
+            },
+			 {
+                name: "GPU",
+                value: 1000,
+                itemStyle: {
+                    normal: {
+                        color: 'black'
+                    }
+                }
+            },
+			 {
+                name: "系统",
+                value: 2000,
+                itemStyle: {
+                    normal: {
+                        color: 'black'
+                    }
+                }
+            },
+			{
+                name: "系统",
+                value: 2000,
+                itemStyle: {
+                    normal: {
+                        color: 'black'
+                    }
+                }
+            },
+			{
+                name: "国产",
+                value: 3000,
+                itemStyle: {
+                    normal: {
+                        color: 'black'
+                    }
+                }
+            },
+			{
+                name: "三星",
+                value: 2000,
+                itemStyle: {
+                    normal: {
+                        color: 'black'
+                    }
+                }
+            },
+			{
+                name: "小米",
+                value: 2000,
+                itemStyle: {
+                    normal: {
+                        color: 'black'
+                    }
+                }
+            },
+			{
+                name: "魅族",
+                value: 2000,
+                itemStyle: {
+                    normal: {
+                        color: 'black'
+                    }
+                }
+            },
+            {
+                name: "性价比",
+                value: 6181,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "像素",
+                value: 4386,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "尺寸",
+                value: 4055,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "手感",
+                value: 2467,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "外形",
+                value: 2244,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "待机时间",
+                value: 1898,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "暖手宝",
+                value: 1484,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "内存",
+                value: 1112,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "电池",
+                value: 965,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "苹果",
+                value: 847,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "4G",
+                value: 582,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "板砖",
+                value: 555,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "配置",
+                value: 550,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "品牌",
+                value: 462,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "售后",
+                value: 366,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "NFC",
+                value: 360,
+                itemStyle: createRandomItemStyle()
+            },
+            {
+                name: "UI",
+                value: 282,
+                itemStyle: createRandomItemStyle()
+            }
+        ]
+    }]
+};
+                    
+            myEchart.setOption(option);
+            });
+        </script>
+ 
+    </body>
+</html>

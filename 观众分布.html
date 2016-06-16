@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<head>
+    
+    <title>ECharts</title>
+</head>
+<body>
+<div id="main" style="height:400px"></div>
+     <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+      <script type="text/javascript">
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        // 使用
+        require
+        (
+            [
+                'echarts',
+                'echarts/chart/line' ,
+                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) 
+            {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                var option = {
+    title : {
+        text: '动态数据',
+        subtext: '纯属虚构'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['展位1','展位2','展位3','展位4','展位5','展位6','展位7','展位8','展位9','展位10']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    dataZoom : {
+        show : false,
+        start : 0,
+        end : 100
+    },
+    xAxis : [
+        {
+			name : '时间',
+            type : 'category',
+            boundaryGap : true,
+            data : (function (){
+                var now = new Date();
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
+                    now = new Date(now - 180000);
+                }
+                return res;
+            })()
+        },
+        {
+            type : 'category',
+            boundaryGap : true,
+            data : (function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(len + 1);
+                }
+                return res;
+            })()
+        }
+    ],
+    yAxis : [
+        {
+			min: 0,
+            type : 'value',
+            scale: true,
+            name : '人数',
+            boundaryGap: [0.2, 0.2]
+        },
+        {
+			min: 0,
+            type : 'value',
+            scale: true,
+            name : '人数',
+            boundaryGap: [0.2, 0.2]
+        }
+    ],
+    series : [
+        {
+            name:'展位1',
+            type:'line',
+            xAxisIndex: 0,
+            yAxisIndex: 0,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(20+Math.round(Math.random() * 20));
+                }
+                return res;
+            })()
+        },
+        {
+            name:'展位2',
+            type:'line',
+			 xAxisIndex: 0,
+            yAxisIndex: 0,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(30+Math.round(Math.random() * 30) + 20);
+                }
+                return res;
+            })()
+        },
+		{
+            name:'展位3',
+            type:'line',
+			 xAxisIndex: 0,
+            yAxisIndex: 0,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(50+Math.round(Math.random() * 10) + 10);
+                }
+                return res;
+            })()
+        },
+		{
+            name:'展位4',
+            type:'line',
+			 xAxisIndex: 0,
+            yAxisIndex: 0,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(Math.round(Math.random() * 100));
+                }
+                return res;
+            })()
+        },
+		{
+            name:'展位5',
+            type:'line',
+			 xAxisIndex: 0,
+            yAxisIndex: 0,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(Math.round(Math.random() * 50) + 20);
+                }
+                return res;
+            })()
+        },
+		{
+            name:'展位6',
+            type:'line',
+			 xAxisIndex: 0,
+            yAxisIndex: 0,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(Math.round(Math.random() * 70) + 20);
+                }
+                return res;
+            })()
+        },
+		{
+            name:'展位7',
+            type:'line',
+			 xAxisIndex: 0,
+            yAxisIndex: 0,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(Math.round(Math.random() * 10) + 90);
+                }
+                return res;
+            })()
+        },
+		{
+            name:'展位8',
+            type:'line',
+			 xAxisIndex: 0,
+            yAxisIndex: 0,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(Math.round(Math.random() * 30) + 30);
+                }
+                return res;
+            })()
+        },
+		{
+            name:'展位9',
+            type:'line',
+			 xAxisIndex: 0,
+            yAxisIndex: 0,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(Math.round(Math.random() * 30) + 5);
+                }
+                return res;
+            })()
+        },
+		{
+            name:'展位10',
+            type:'line',
+			 xAxisIndex: 0,
+            yAxisIndex: 0,
+            data:(function (){
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(10 + Math.round(Math.random() * 40));
+                }
+                return res;
+            })()
+        }
+    ]
+};; 
+                myChart.setOption(option); 
+
+                var lastData = 11;
+var axisData;
+var timeTicket;
+clearInterval(timeTicket);
+count = 11;
+var now2 = new Date();
+timeTicket = setInterval(function (){
+    axisData = (new Date).toLocaleTimeString().replace(/^\D*/,'');
+    var data0 = option.series[0].data;
+    var data1 = option.series[1].data;
+	var data2 = option.series[2].data;
+	 var data3 = option.series[3].data;
+    var data4 = option.series[4].data;
+	var data5 = option.series[5].data;
+	 var data6 = option.series[6].data;
+    var data7 = option.series[7].data;
+	var data8 = option.series[8].data;
+	 var data9 = option.series[9].data;
+    data0.shift();
+    data0.push(20+Math.round(Math.random() * 20));
+	data1.shift();
+    data1.push(30+Math.round(Math.random() * 20));
+	data2.shift();
+    data2.push(10 + Math.round(Math.random() * 10));
+	data3.shift();
+    data3.push(Math.round(Math.random() * 100));
+	data4.shift();
+    data4.push(50 + Math.round(Math.random() * 20));
+	data5.shift();
+    data5.push(70 + Math.round(Math.random() * 20));
+	data6.shift();
+    data6.push( 90 + Math.round(Math.random() * 10));
+	data7.shift();
+    data7.push(30 + Math.round(Math.random() * 30));
+	data8.shift();
+   data8.push( 5 + Math.round(Math.random() * 30));
+	data9.shift();
+    data9.push(10 + Math.round(Math.random() * 40));
+
+    option.xAxis[0].data.shift();
+    option.xAxis[0].data.push(axisData);
+    option.xAxis[1].data.shift();
+    option.xAxis[1].data.push(count++);
+
+    myChart.setOption(option);
+}, 1800);
+
+            }
+        );
+    </script>
+
+</body>
